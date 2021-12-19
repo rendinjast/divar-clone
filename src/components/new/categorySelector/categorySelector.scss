@@ -1,0 +1,30 @@
+.new__category {
+  margin: 5rem 0;
+  width: 40rem;
+  &-header {
+    margin-bottom: 2rem;
+  }
+  &-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    li {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0;
+      padding: 1rem 0;
+      cursor: pointer;
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+      span {
+        display: flex;
+        align-items: centers;
+        *:last-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

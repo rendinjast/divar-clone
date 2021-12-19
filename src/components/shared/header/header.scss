@@ -1,0 +1,54 @@
+@import '../../../assets/styles/variables.scss';
+
+.header {
+  &__logo {
+    svg {
+      width: 4rem;
+    }
+  }
+  &__container {
+    width: 100%;
+    height: 6.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0 1.6rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    z-index: 12;
+  }
+  &__menu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__lists {
+    display: flex;
+    gap: 1rem;
+    @media only screen and (max-width: $mobile) {
+      display: none;
+    }
+    &.active {
+      width: 13rem;
+      position: absolute;
+      left: 1rem;
+      top: 3rem;
+      background-color: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border: 1px solid rgba($color: #000000, $alpha: 0.2);
+      border-radius: 4px;
+      padding: 0.5rem 0;
+      z-index: 3;
+      > button {
+        padding: 0.7rem 0;
+      }
+    }
+  }
+}

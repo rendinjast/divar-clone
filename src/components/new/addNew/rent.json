@@ -1,0 +1,746 @@
+{
+  "json_schema": {
+    "id": "root",
+    "type": "object",
+    "title": "آپارتمان",
+    "required": [
+      "rooms",
+      "category",
+      "description",
+      "title",
+      "contact",
+      "size",
+      "user_type",
+      "location",
+      "warehouse",
+      "rent_to_single",
+      "rent_credit_transform",
+      "year",
+      "floor",
+      "elevator",
+      "parking"
+    ],
+    "properties": {
+      "title": {
+        "id": "title",
+        "type": "string",
+        "title": "عنوان آگهی",
+        "maxLength": 50,
+        "minLength": 3
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^/([a-zA-Z0-9_\\-]*)/([a-zA-Z0-9_\\-\\.]*.jpg)$"
+        },
+        "title": "عکس آگهی",
+        "errors": {
+          "maxItems": "در این دسته‌بندی مجاز به درج ${schema} عکس هستید."
+        },
+        "maxItems": 20,
+        "minItems": 0
+      },
+      "contact": {
+        "type": "object",
+        "title": "اطلاعات تماس",
+        "required": ["phone"],
+        "properties": {
+          "phone": {
+            "id": "phone",
+            "type": "string",
+            "title": "شمارهٔ موبایل",
+            "errors": {
+              "pattern": "شماره تماس به درستی وارد نشده است، لطفا شماره تماس  معتبر ی وارد کنید."
+            },
+            "pattern": "^(09|۰۹|٠٩)[0-9۰-۹٠-٩]{9}$"
+          },
+          "chat_enabled": {
+            "id": "chat_enabled",
+            "type": "boolean",
+            "title": "چت دیوار فعال شود",
+            "default": true
+          }
+        }
+      },
+      "category": {
+        "type": "string",
+        "title": "دسته‌بندی"
+      },
+      "location": {
+        "type": "object",
+        "title": "محدودهٔ آگهی",
+        "required": ["city"],
+        "properties": {
+          "city": {
+            "id": "place2",
+            "type": "integer",
+            "title": "شهر"
+          },
+          "latitude": {
+            "id": "latitude",
+            "type": "number"
+          },
+          "province": {
+            "id": "province",
+            "type": "integer"
+          },
+          "longitude": {
+            "id": "longitude",
+            "type": "number"
+          },
+          "neighborhood": {
+            "id": "place4",
+            "type": "integer",
+            "title": "محدودهٔ آگهی"
+          },
+          "destination_latitude": {
+            "id": "destination_latitude",
+            "type": "number"
+          },
+          "destination_longitude": {
+            "id": "destination_longitude",
+            "type": "number"
+          },
+          "street": {
+            "id": "street",
+            "title": "خیابان",
+            "type": "string"
+          },
+          "approximate_latitude": {
+            "id": "approximate_latitude",
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          },
+          "approximate_longitude": {
+            "id": "approximate_longitude",
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          },
+          "radius": {
+            "id": "radius",
+            "default": 300,
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          }
+        }
+      },
+      "description": {
+        "id": "desc",
+        "type": "string",
+        "title": "توضیحات آگهی",
+        "errors": {
+          "maxLength": "طول متن بیشتر از  ${schema} حرف است.",
+          "minLength": "طول متن باید بیشتر از  ${schema} حرف باشد."
+        },
+        "maxLength": 1000,
+        "minLength": 10
+      },
+      "user_type": {
+        "id": "v05",
+        "enum": ["شخصی", "مشاور املاک"],
+        "type": "string",
+        "title": "آگهی‌دهنده"
+      },
+      "size": {
+        "id": "v01",
+        "type": "integer",
+        "title": "متراژ",
+        "maximum": 10000000,
+        "minimum": 1
+      },
+      "new_rent": {
+        "id": "v10",
+        "type": "integer",
+        "title": "اجارهٔ ماهانه",
+        "errors": {
+          "minimum": "مقدار ${data} برای قیمت کمتر از حد مجاز است. لطفاً مقدار ${schema} به بالا وارد کنید."
+        },
+        "maximum": 50000000000,
+        "minimum": 0
+      },
+      "new_credit": {
+        "id": "v09",
+        "type": "integer",
+        "title": "ودیعه",
+        "errors": {
+          "minimum": "مقدار ${data} برای قیمت کمتر از حد مجاز است. لطفاً مقدار ${schema} به بالا وارد کنید."
+        },
+        "maximum": 50000000000,
+        "minimum": 0
+      },
+      "floor": {
+        "enum": [
+          "-1",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "30+"
+        ],
+        "type": "string",
+        "title": "طبقه",
+        "enumNames": [
+          "زیرهمکف",
+          "همکف",
+          "۱",
+          "۲",
+          "۳",
+          "۴",
+          "۵",
+          "۶",
+          "۷",
+          "۸",
+          "۹",
+          "۱۰",
+          "۱۱",
+          "۱۲",
+          "۱۳",
+          "۱۴",
+          "۱۵",
+          "۱۶",
+          "۱۷",
+          "۱۸",
+          "۱۹",
+          "۲۰",
+          "۲۱",
+          "۲۲",
+          "۲۳",
+          "۲۴",
+          "۲۵",
+          "۲۶",
+          "۲۷",
+          "۲۸",
+          "۲۹",
+          "۳۰",
+          "بالاتر از ۳۰"
+        ]
+      },
+      "rooms": {
+        "id": "v03",
+        "enum": ["بدون اتاق", "یک", "دو", "سه", "چهار", "پنج یا بیشتر"],
+        "type": "string",
+        "title": "تعداد اتاق"
+      },
+      "parking": {
+        "enum": ["true", "false"],
+        "type": "string",
+        "title": "پارکینگ",
+        "enumNames": ["دارد", "ندارد"]
+      },
+      "elevator": {
+        "enum": ["true", "false"],
+        "type": "string",
+        "title": "آسانسور",
+        "enumNames": ["دارد", "ندارد"]
+      },
+      "zoonkan_enabled": {
+        "id": "zoonkan_enabled",
+        "type": "boolean",
+        "title": "برای مشاوران محدوده ارسال شود"
+      },
+      "year": {
+        "type": "string",
+        "enum": [
+          "۱۴۰۰",
+          "۱۳۹۹",
+          "۱۳۹۸",
+          "۱۳۹۷",
+          "۱۳۹۶",
+          "۱۳۹۵",
+          "۱۳۹۴",
+          "۱۳۹۳",
+          "۱۳۹۲",
+          "۱۳۹۱",
+          "۱۳۹۰",
+          "۱۳۸۹",
+          "۱۳۸۸",
+          "۱۳۸۷",
+          "۱۳۸۶",
+          "۱۳۸۵",
+          "۱۳۸۴",
+          "۱۳۸۳",
+          "۱۳۸۲",
+          "۱۳۸۱",
+          "۱۳۸۰",
+          "۱۳۷۹",
+          "۱۳۷۸",
+          "۱۳۷۷",
+          "۱۳۷۶",
+          "۱۳۷۵",
+          "۱۳۷۴",
+          "۱۳۷۳",
+          "۱۳۷۲",
+          "۱۳۷۱",
+          "قبل از ۱۳۷۰"
+        ],
+        "title": "سال ساخت",
+        "id": "v12"
+      },
+      "warehouse": {
+        "enum": ["true", "false"],
+        "enumNames": ["دارد", "ندارد"],
+        "type": "string",
+        "title": "انباری"
+      },
+      "rent_to_single": {
+        "enum": ["true", "false"],
+        "enumNames": ["خانواده و مجرد", "خانواده"],
+        "type": "string",
+        "title": "مناسب برای"
+      },
+      "rent_credit_transform": {
+        "enum": ["true", "false"],
+        "enumNames": ["قابل تبدیل", "غیر قابل تبدیل"],
+        "type": "string",
+        "title": "ودیعه و اجاره"
+      },
+      "other_options_and_attributes": {
+        "title": "سایر ویژگی‌ها و امکانات",
+        "type": "object",
+        "properties": {
+          "warm_water_provider": {
+            "enum": ["water_heater", "powerhouse", "package", "unselect"],
+            "enumNames": ["آبگرم‌کن", "موتورخانه", "پکیج", "انتخاب نشده"],
+            "type": "string",
+            "title": "تأمین‌کننده آب گرم"
+          },
+          "balcony": {
+            "enum": ["true", "false", "unselect"],
+            "enumNames": ["دارد", "ندارد", "انتخاب نشده"],
+            "type": "string",
+            "title": "بالکن"
+          },
+          "heating_system": {
+            "enum": [
+              "heater",
+              "shoofaj",
+              "fan_coil",
+              "floor_heating",
+              "duct_split",
+              "split",
+              "fireplace",
+              "unselect"
+            ],
+            "enumNames": [
+              "بخاری",
+              "شوفاژ",
+              "فن کوئل",
+              "از کف",
+              "داکت اسپلیت",
+              "اسپلیت",
+              "شومینه",
+              "انتخاب نشده"
+            ],
+            "type": "string",
+            "title": "گرمایش"
+          },
+          "cooling_system": {
+            "enum": [
+              "water_cooler",
+              "air_conditioner",
+              "duct_split",
+              "split",
+              "fan_coil",
+              "unselect"
+            ],
+            "enumNames": [
+              "کولر آبی",
+              "کولر گازی",
+              "داکت اسپلیت",
+              "اسپلیت",
+              "فن کوئل",
+              "انتخاب نشده"
+            ],
+            "type": "string",
+            "title": "سرمایش"
+          },
+          "floor_type": {
+            "enum": [
+              "ceramic",
+              "wood_parquet",
+              "laminate_parquet",
+              "stone",
+              "floor_covering",
+              "carpet",
+              "mosaic",
+              "unselect"
+            ],
+            "enumNames": [
+              "سرامیک",
+              "پارکت چوب",
+              "پارکت لمینت",
+              "سنگ",
+              "کف‌پوش PVC",
+              "موکت",
+              "موزائیک",
+              "انتخاب نشده"
+            ],
+            "type": "string",
+            "title": "جنس کف"
+          },
+          "floors_count": {
+            "enum": [
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "30+",
+              "unselect"
+            ],
+            "enumNames": [
+              "۲",
+              "۳",
+              "۴",
+              "۵",
+              "۶",
+              "۷",
+              "۸",
+              "۹",
+              "۱۰",
+              "۱۱",
+              "۱۲",
+              "۱۳",
+              "۱۴",
+              "۱۵",
+              "۱۶",
+              "۱۷",
+              "۱۸",
+              "۱۹",
+              "۲۰",
+              "۲۱",
+              "۲۲",
+              "۲۳",
+              "۲۴",
+              "۲۵",
+              "۲۶",
+              "۲۷",
+              "۲۸",
+              "۲۹",
+              "۳۰",
+              "بیشتر از ۳۰",
+              "انتخاب نشده"
+            ],
+            "type": "string",
+            "title": "تعداد کل طبقات ساختمان"
+          },
+          "unit_per_floor": {
+            "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "more_than_8", "unselect"],
+            "enumNames": ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "بیشتر از ۸", "انتخاب نشده"],
+            "type": "string",
+            "title": "تعداد واحد در طبقه"
+          },
+          "toilet": {
+            "enum": ["squat", "seat", "squat_seat", "unselect"],
+            "enumNames": ["ایرانی", "فرنگی", "ایرانی و فرنگی", "انتخاب نشده"],
+            "type": "string",
+            "title": "سرویس بهداشتی"
+          },
+          "building_direction": {
+            "enum": ["north", "south", "east", "west", "unselect"],
+            "enumNames": ["شمالی", "جنوبی", "شرقی", "غربی", "انتخاب نشده"],
+            "type": "string",
+            "title": "جهت ساختمان"
+          },
+          "rebuilt": {
+            "type": "boolean",
+            "title": "بازسازی شده‌است"
+          }
+        }
+      }
+    },
+    "definitions": {},
+    "additionalProperties": false
+  },
+  "ui_schema": {
+    "title": {
+      "ui:help": "در عنوان آگهی به موارد مهم و چشمگیر اشاره کنید."
+    },
+    "images": {
+      "ui:help": "عکس‌هایی از فضای داخل و بیرون ملک اضافه کنید. آگهی‌های دارای عکس تا «۳ برابر» بیشتر توسط کاربران دیده می‌شوند.",
+      "ui:field": "CustomImageField",
+      "ui:options": {
+        "min_size": 600,
+        "manage_url": "https://divarcdn.com/static",
+        "upload_url": "https://divar.ir/upload_s3",
+        "internal_crop": true,
+        "manage_bucket": "manage_pictures",
+        "upload_bucket": "temp",
+        "placeholder_count": 5,
+        "search_with_media_store": true,
+        "min_height": 600,
+        "max_height": 1200,
+        "min_width": 600,
+        "max_width": 1200,
+        "aspect_ratio": "2:1",
+        "placeholders": []
+      },
+      "ui:widget": "PhotoWidget"
+    },
+    "contact": {
+      "phone": {
+        "ui:help": "کد تأیید به شمارهٔ موبایل شما ارسال خواهد شد. تماس و چت نیز با این شماره انجام می‌شود.\nتوجه: لطفاً پس از ثبت آگهی، به پیامک‌های پرداخت وجه بی‌اعتنا باشید.",
+        "ui:options": {
+          "inputType": "tel"
+        },
+        "ui:placeholder": "شماره موبایل شما (**** *** 0911)"
+      },
+      "ui:field": "CustomContactField",
+      "ui:order": ["phone", "chat_enabled"]
+    },
+    "category": {
+      "ui:field": "CustomCategorySelectorField",
+      "ui:widget": "hidden"
+    },
+    "location": {
+      "ui:field": "CustomLocationField",
+      "street": {
+        "ui:title": "خیابان",
+        "ui:widget": "HiddenWidget"
+      },
+      "ui:options": {
+        "title_with_districts": "۱) انتخاب شهر و محله",
+        "title_without_districts": "۱) انتخاب شهر",
+        "street_title": "۲) انتخاب محدوده یا خیابان اصلی",
+        "is_street_enable": "true",
+        "approximate_location": {
+          "switch_text": "موقعیت دقیق نمایش داده نشود",
+          "description": "با هربار خاموش و روشن‌کردن کلید بالا، یک دایرهٔ اتفاقی جدید در محدودهٔ ملک شما ترسیم می‌شود."
+        },
+        "map_title": "انتخاب محدودهٔ ملک روی نقشه",
+        "map_subtitle": "پس از تعیین محدوده روی نقشه، می‌توانید انتخاب کنید که موقعیت دقیق مکانی در آگهی نمایش داده نشود."
+      },
+      "approximate_latitude": {
+        "ui:widget": "HiddenWidget"
+      },
+      "approximate_longitude": {
+        "ui:widget": "HiddenWidget"
+      },
+      "radius": {
+        "ui:widget": "HiddenWidget"
+      }
+    },
+    "ui:order": [
+      "category",
+      "location",
+      "images",
+      "size",
+      "user_type",
+      "new_credit",
+      "new_rent",
+      "rent_credit_transform",
+      "rent_to_single",
+      "rooms",
+      "year",
+      "floor",
+      "elevator",
+      "parking",
+      "warehouse",
+      "other_options_and_attributes",
+      "zoonkan_enabled",
+      "contact",
+      "title",
+      "description"
+    ],
+    "description": {
+      "ui:help": "در توضیحات آگهی به مواردی مانند شرایط اجاره، جزئیات و ویژگی‌های قابل توجه، دسترسی‌های محلی و موقعیت قرارگیری ملک اشاره کنید.",
+      "ui:widget": "textarea",
+      "ui:placeholder": "توضیحات را بنویسید."
+    },
+    "user_type": {
+      "ui:widget": "radio"
+    },
+    "size": {
+      "ui:valueholder": "%s مترمربع",
+      "ui:options": {
+        "ui:comma_separated": {
+          "enabled": true,
+          "pattern": "###,###"
+        }
+      }
+    },
+    "new_rent": {
+      "ui:placeholder": "اجاره به تومان",
+      "ui:valueholder": "%s تومان",
+      "ui:options": {
+        "ui:comma_separated": {
+          "enabled": true,
+          "pattern": "###,###"
+        }
+      }
+    },
+    "new_credit": {
+      "ui:placeholder": "ودیعه به تومان",
+      "ui:valueholder": "%s تومان",
+      "ui:options": {
+        "ui:comma_separated": {
+          "enabled": true,
+          "pattern": "###,###"
+        }
+      }
+    },
+    "floor": {
+      "ui:widget": "select"
+    },
+    "rooms": {
+      "ui:widget": "select"
+    },
+    "parking": {
+      "ui:widget": "select"
+    },
+    "elevator": {
+      "ui:widget": "select"
+    },
+    "zoonkan_enabled": {
+      "ui:widget": "hidden"
+    },
+    "year": {
+      "ui:widget": "select"
+    },
+    "warehouse": {
+      "ui:widget": "select",
+      "ui:secondary_title": "انباری",
+      "ui:placeholder": "انتخاب"
+    },
+    "rent_to_single": {
+      "ui:widget": "select",
+      "ui:secondary_title": "مناسب برای",
+      "ui:placeholder": "انتخاب"
+    },
+    "rent_credit_transform": {
+      "ui:widget": "select",
+      "ui:secondary_title": "ودیعه و اجاره",
+      "ui:placeholder": "انتخاب"
+    },
+    "other_options_and_attributes": {
+      "ui:widget": "ScreenWidget",
+      "ui:field": "CustomOptionsField",
+      "ui:title": "انتخاب سایر ویژگی‌ها و امکانات",
+      "ui:options": {},
+      "ui:placeholder": "انتخاب",
+      "ui:valueholder": "${count} مورد",
+      "warm_water_provider": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "تأمین‌کننده آب گرم",
+        "ui:placeholder": "انتخاب"
+      },
+      "balcony": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "بالکن",
+        "ui:placeholder": "انتخاب"
+      },
+      "heating_system": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "گرمایش",
+        "ui:placeholder": "انتخاب"
+      },
+      "cooling_system": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "سرمایش",
+        "ui:placeholder": "انتخاب"
+      },
+      "floor_type": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "جنس کف",
+        "ui:placeholder": "انتخاب"
+      },
+      "floors_count": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "تعداد کل طبقات ساختمان",
+        "ui:placeholder": "انتخاب"
+      },
+      "unit_per_floor": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "تعداد واحد در طبقه",
+        "ui:placeholder": "انتخاب"
+      },
+      "toilet": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "سرویس بهداشتی",
+        "ui:placeholder": "انتخاب"
+      },
+      "building_direction": {
+        "ui:widget": "SingleSelectBottomSheet",
+        "ui:title": "جهت ساختمان",
+        "ui:placeholder": "انتخاب"
+      },
+      "rebuilt": {
+        "ui:widget": "CheckBoxWidget",
+        "ui:title": "بازسازی شده‌است",
+        "ui:placeholder": "انتخاب",
+        "ui:has_divider": true
+      },
+      "ui:order": [
+        "unit_per_floor",
+        "floors_count",
+        "building_direction",
+        "rebuilt",
+        "balcony",
+        "floor_type",
+        "toilet",
+        "cooling_system",
+        "heating_system",
+        "warm_water_provider"
+      ]
+    }
+  },
+  "meta_version": 1150
+}

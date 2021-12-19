@@ -1,0 +1,26 @@
+.login-container {
+  width: 100%;
+  background: url("../../../assets/img/login_bg.jpg") center no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login__toggle-page {
+    margin-top: 8px;
+    margin-left: 12px;
+    font-size: 1.2rem;
+  }
+  .login__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-section {
+    padding: 8px;
+    &:last-of-type {
+      border-top: var(--border);
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+  }
+}

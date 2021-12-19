@@ -1,0 +1,43 @@
+.link {
+  padding: 0.5rem;
+  border-radius: 4px;
+  &.primary-txt {
+    color: var(--primary);
+    &:hover {
+      background-color: lighten($color: #be3737, $amount: 50);
+    }
+  }
+  &.primary {
+    background-color: var(--primary);
+    color: white;
+    span {
+      font-weight: bold;
+    }
+
+    &:hover {
+      background-color: #be3737;
+    }
+  }
+  &.lighten {
+    color: var(--txt-color-light);
+
+    &:hover {
+      color: var(--txt-color);
+    }
+  }
+  &.outline {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    &:hover {
+      background-color: rgba(166, 38, 38, 0.04);
+    }
+  }
+  &.round {
+    border-radius: 8rem;
+  }
+  svg {
+    color: inherit;
+  }
+}

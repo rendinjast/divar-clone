@@ -1,0 +1,21 @@
+.leaflet {
+  &-container {
+    width: 100%;
+    height: 20rem;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  &-control-attribution {
+    display: none;
+  }
+  &-bar {
+    border: none !important;
+    background-color: red !important;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 12%) !important;
+    a {
+      color: gray !important;
+      font-size: 1.3rem !important;
+    }
+  }
+}

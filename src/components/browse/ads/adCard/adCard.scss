@@ -1,0 +1,32 @@
+.ad-card {
+  &__container {
+    height: 17rem;
+    overflow: hidden;
+    display: flex;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1rem;
+    cursor: pointer;
+  }
+  &__image {
+    width: 13.6rem;
+    height: 13.6rem;
+    display: flex;
+    background-color: #e2e2e2;
+    border-radius: 4px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    img {
+      object-fit: cover;
+    }
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  &__desc {
+    flex: 2;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,16 @@
+.footer {
+  width: 50rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  #Layer_1 {
+    width: 2.5rem;
+    filter: grayscale(100%) opacity(79%);
+  }
+  .socials {
+    margin-right: 12rem;
+    svg {
+      width: 1.5rem;
+    }
+  }
+}

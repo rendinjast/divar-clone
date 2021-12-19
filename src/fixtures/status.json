@@ -1,0 +1,6 @@
+[
+  { "label": "نو", "value": "new" },
+  { "label": "در حد نو", "value": "like-new" },
+  { "label": "کارکرده", "value": "used" },
+  { "label": "نیاز به تعمیر", "value": "repair-needed" }
+]

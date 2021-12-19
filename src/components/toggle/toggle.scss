@@ -1,0 +1,35 @@
+.toggle {
+  position: relative;
+  width: 3.5rem;
+  height: 2rem;
+  background-color: #d2d2d2;
+  border-radius: 5rem;
+  transition: background-color 0.3s ease;
+  &::before {
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: white;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 7%;
+    right: 1%;
+    transition: right 0.3s ease;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  }
+  &.active {
+    background-color: var(--primary);
+    &::before {
+      right: 44%;
+    }
+  }
+  &-container {
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+}

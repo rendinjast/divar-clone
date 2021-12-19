@@ -1,0 +1,50 @@
+.selector {
+  width: 100%;
+  position: relative;
+  &__header {
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    svg {
+      transition: transform 0.2s;
+      color: var(--txt-color-light);
+    }
+  }
+  &__lists {
+    position: absolute;
+    top: 5rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: 5px;
+    padding: 0 1rem;
+    z-index: 10000;
+    background: var(--bg-color);
+    border-radius: 6px;
+  }
+  &__options {
+    max-height: 45rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    button {
+      width: 90%;
+      justify-content: flex-start;
+    }
+  }
+  &.expanded {
+    .selector {
+      &__header {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

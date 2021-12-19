@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="48" viewBox="0 0 27 48">
+  <defs>
+    <linearGradient id="pin-a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#A62626" stop-opacity=".32"/>
+      <stop offset="100%" stop-color="#A62626"/>
+    </linearGradient>
+    <path id="pin-c" d="M18.7943333,14.4604 C18.7943333,17.4054599 16.4074496,19.7937333 13.4601047,19.7937333 C10.5145504,19.7937333 8.12766667,17.4054599 8.12766667,14.4604 C8.12766667,11.5153401 10.5145504,9.12706667 13.4601047,9.12706667 C16.4074496,9.12706667 18.7943333,11.5153401 18.7943333,14.4604"/>
+    <filter id="pin-b" width="231.2%" height="231.2%" x="-65.6%" y="-46.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.24 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="url(#pin-a)" d="M13.0737,1.0051 C5.8032,1.2151 -0.1398,7.4686 0.0027,14.7391 C0.1092,20.1901 3.4557,24.8461 8.1957,26.8636 C10.4532,27.8251 11.9712,29.9746 11.9712,32.4286 L11.9712,39.4115514 C11.9712,40.2395514 12.6417,40.9115514 13.4712,40.9115514 C14.2992,40.9115514 14.9712,40.2395514 14.9712,39.4115514 L14.9712,32.4256 C14.9712,30.0121 16.4172,27.8341 18.6447,26.9056 C23.5167,24.8776 26.9412,20.0761 26.9412,14.4706 C26.9412,6.8986 20.6937,0.7861 13.0737,1.0051 Z"/>
+    <path fill="#A62626" fill-rule="nonzero" d="M13.4706,47.812 C12.5556,47.812 11.8146,47.071 11.8146,46.156 C11.8146,45.241 12.5556,44.5 13.4706,44.5 C14.3856,44.5 15.1266,45.241 15.1266,46.156 C15.1266,47.071 14.3856,47.812 13.4706,47.812 Z"/>
+    <use fill="#000" filter="url(#pin-b)" xlink:href="#pin-c"/>
+    <use fill="#FFF" xlink:href="#pin-c"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+.browse-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 124rem;
+  margin: auto;
+  padding-top: 2rem;
+  background-color: var(--bg-color);
+  padding: 1.6rem;
+  gap: 1.6rem;
+}

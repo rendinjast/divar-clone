@@ -1,0 +1,234 @@
+{
+  "json_schema": {
+    "id": "root",
+    "type": "object",
+    "title": "دفتر کار",
+    "required": ["category", "description", "title", "contact", "location"],
+    "properties": {
+      "title": {
+        "id": "title",
+        "type": "string",
+        "title": "عنوان آگهی",
+        "maxLength": 50,
+        "minLength": 3
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^/([a-zA-Z0-9_\\-]*)/([a-zA-Z0-9_\\-\\.]*.jpg)$"
+        },
+        "title": "عکس آگهی",
+        "errors": {
+          "maxItems": "در این دسته‌بندی مجاز به درج ${schema} عکس هستید."
+        },
+        "maxItems": 10,
+        "minItems": 0
+      },
+      "contact": {
+        "type": "object",
+        "title": "اطلاعات تماس",
+        "required": ["phone"],
+        "properties": {
+          "phone": {
+            "id": "phone",
+            "type": "string",
+            "title": "شمارهٔ موبایل",
+            "errors": {
+              "pattern": "شماره تماس به درستی وارد نشده است، لطفا شماره تماس  معتبر ی وارد کنید."
+            },
+            "pattern": "^(09|۰۹|٠٩)[0-9۰-۹٠-٩]{9}$"
+          },
+          "hide_phone": {
+            "id": "hide_phone",
+            "type": "boolean",
+            "title": "شماره تلفن در آگهی نمایش داده نشود"
+          },
+          "chat_enabled": {
+            "id": "chat_enabled",
+            "type": "boolean",
+            "title": "چت دیوار فعال شود",
+            "default": true
+          }
+        }
+      },
+      "category": {
+        "type": "string",
+        "title": "دسته‌بندی"
+      },
+      "exchange": {
+        "type": "boolean",
+        "title": "مایلم معاوضه کنم"
+      },
+      "location": {
+        "type": "object",
+        "title": "محدودهٔ آگهی",
+        "required": ["city"],
+        "properties": {
+          "city": {
+            "id": "place2",
+            "type": "integer",
+            "title": "شهر"
+          },
+          "latitude": {
+            "id": "latitude",
+            "type": "number"
+          },
+          "province": {
+            "id": "province",
+            "type": "integer"
+          },
+          "longitude": {
+            "id": "longitude",
+            "type": "number"
+          },
+          "neighborhood": {
+            "id": "place4",
+            "type": "integer",
+            "title": "محدودهٔ آگهی"
+          },
+          "destination_latitude": {
+            "id": "destination_latitude",
+            "type": "number"
+          },
+          "destination_longitude": {
+            "id": "destination_longitude",
+            "type": "number"
+          },
+          "approximate_latitude": {
+            "id": "approximate_latitude",
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          },
+          "approximate_longitude": {
+            "id": "approximate_longitude",
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          },
+          "radius": {
+            "id": "radius",
+            "default": 300,
+            "type": "number",
+            "errors": {
+              "type": "نوع ورودی نادرست است."
+            }
+          }
+        }
+      },
+      "new_price": {
+        "id": "v09",
+        "type": "integer",
+        "title": "قیمت",
+        "errors": {
+          "minimum": "مقدار ${data} برای قیمت کمتر از حد مجاز است. لطفاً مقدار ${schema} به بالا وارد کنید."
+        },
+        "maximum": 50000000000,
+        "minimum": 0
+      },
+      "description": {
+        "id": "desc",
+        "type": "string",
+        "title": "توضیحات آگهی",
+        "errors": {
+          "maxLength": "طول متن بیشتر از  ${schema} حرف است.",
+          "minLength": "طول متن باید بیشتر از  ${schema} حرف باشد."
+        },
+        "maxLength": 1000,
+        "minLength": 10
+      }
+    },
+    "definitions": {},
+    "additionalProperties": false
+  },
+  "ui_schema": {
+    "title": {
+      "ui:help": "در عنوان آگهی به موارد مهم و چشمگیر اشاره کنید."
+    },
+    "images": {
+      "ui:help": "افزودنِ عکس بازدید آگهی شما را تا سه برابر افزایش می‌دهد.",
+      "ui:field": "CustomImageField",
+      "ui:options": {
+        "min_size": 600,
+        "manage_url": "https://divarcdn.com/static",
+        "upload_url": "https://divar.ir/upload_s3",
+        "internal_crop": true,
+        "manage_bucket": "manage_pictures",
+        "upload_bucket": "temp",
+        "placeholder_count": 5,
+        "search_with_media_store": true,
+        "min_height": 600,
+        "max_height": 1200,
+        "min_width": 600,
+        "max_width": 1200,
+        "aspect_ratio": "2:1",
+        "placeholders": []
+      },
+      "ui:widget": "PhotoWidget"
+    },
+    "contact": {
+      "phone": {
+        "ui:help": "کد تأیید به شمارهٔ موبایل شما ارسال خواهد شد. تماس و چت نیز با این شماره انجام می‌شود.\nتوجه: لطفاً پس از ثبت آگهی، به پیامک‌های پرداخت وجه بی‌اعتنا باشید.",
+        "ui:options": {
+          "inputType": "tel"
+        },
+        "ui:placeholder": "شماره موبایل شما (**** *** 0911)"
+      },
+      "ui:field": "CustomContactField",
+      "ui:order": ["phone", "chat_enabled", "hide_phone"]
+    },
+    "category": {
+      "ui:field": "CustomCategorySelectorField",
+      "ui:widget": "hidden"
+    },
+    "exchange": {},
+    "location": {
+      "ui:field": "CustomLocationField",
+      "approximate_latitude": {
+        "ui:widget": "HiddenWidget"
+      },
+      "approximate_longitude": {
+        "ui:widget": "HiddenWidget"
+      },
+      "radius": {
+        "ui:widget": "HiddenWidget"
+      },
+      "ui:options": {
+        "approximate_location": {
+          "switch_text": "موقعیت دقیق نمایش داده نشود",
+          "description": "با هربار خاموش و روشن‌کردن کلید بالا، یک دایرهٔ اتفاقی جدید در محدودهٔ ملک شما ترسیم می‌شود."
+        },
+        "map_title": "انتخاب محدودهٔ ملک روی نقشه",
+        "map_subtitle": "پس از تعیین محدوده روی نقشه، می‌توانید انتخاب کنید که موقعیت دقیق مکانی در آگهی نمایش داده نشود."
+      }
+    },
+    "ui:order": [
+      "category",
+      "location",
+      "images",
+      "contact",
+      "new_price",
+      "exchange",
+      "title",
+      "description"
+    ],
+    "new_price": {
+      "ui:placeholder": "قیمت به تومان",
+      "ui:valueholder": "%s تومان",
+      "ui:options": {
+        "ui:comma_separated": {
+          "enabled": true,
+          "pattern": "###,###"
+        }
+      }
+    },
+    "description": {
+      "ui:help": "جزئیات و نکات قابل توجه آگهی خود را کامل و دقیق بنویسید. درج شماره موبایل در متن آگهی مجاز نیست .",
+      "ui:widget": "textarea"
+    }
+  },
+  "meta_version": 1150
+}

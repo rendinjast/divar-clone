@@ -1,0 +1,292 @@
+:root {
+  --border-1px: 1px solid rgba(0, 0, 0, 0.1);
+  --border: 1px solid rgba(0 0 0 / 5%);
+  --radius: 8px;
+  --shadow-sm: 0px 0px 10px rgb(0 0 0 / 5%);
+  --shadow: 0px 10px 30px rgb(0 0 0 / 5%);
+  --shadow-lg: 0px 0px 15px rgb(0 0 0 / 10%);
+  --min-gab: 6px;
+  --small-gab: 8px;
+  --main-gab: 12px;
+  --large-gab: 16px;
+  --max-gab: 24px;
+  --gray: #999999;
+  --gray-light: #f9f9f9;
+  --gray-light-hover: #f5f5f5;
+  --text-light-color: #fafafa;
+  --primary: #a62626;
+  --secondary: #2c9985;
+  --hover: rgb(0 0 0 / 5%);
+  --secondary-color: #03dac6;
+  --bg-color: #ffffff;
+  --card-color: #f3f3f3;
+  --input-color: #ffffff;
+  --border: 1px solid #0000001a;
+  --txt-color: #212121;
+  --txt-color-light: #8a8a8a;
+}
+
+// farsi digit
+@font-face {
+  font-family: 'Vazir';
+  src: url('../fonts/Vazir-Thin-FD.eot');
+  src: url('../fonts/Vazir-Thin-FD.eot') format('embedded-opentype'),
+    url('../fonts/Vazir-Thin-FD.woff') format('woff'),
+    url('../fonts/Vazir-Thin-FD.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../fonts/Vazir-FD.eot');
+  src: url('../fonts/Vazir-FD.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-FD.woff') format('woff'), url('../fonts/Vazir-FD.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../fonts/Vazir-Bold-FD.eot');
+  src: url('../fonts/Vazir-Bold-FD.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Bold-FD.woff') format('woff'),
+    url('../fonts/Vazir-Bold-FD.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.3rem;
+  font-family: Vazir;
+  direction: rtl;
+}
+.main {
+  background-color: var(--bg-color);
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Vazir, sans-serif !important;
+  font-weight: 300;
+  outline: none;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+ui {
+  list-style: none;
+}
+button {
+  border: none;
+}
+// text styles ============================================================
+p {
+  font-size: 1.4rem;
+  font-family: 'Vazir', sans-serif !important;
+  margin: 1rem 0;
+}
+h3 {
+  font-size: 1.6rem;
+}
+.textview {
+  color: var(--txt-color);
+  &.error {
+    color: #ea5f51;
+  }
+  &.inherit {
+    color: inherit;
+  }
+  &.lighten {
+    color: #919191;
+    > * {
+      color: #919191;
+    }
+  }
+  &.center {
+    text-align: center;
+  }
+}
+h3 {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+}
+svg {
+  margin: 0 8px;
+  display: inline-block;
+  font-size: 1.9rem;
+  margin: 0 !important;
+  color: var(--txt-color);
+}
+.d-flex {
+  display: flex;
+}
+.app {
+  width: 100%;
+  height: 100vh;
+}
+.strong {
+  font-weight: bold;
+}
+.container {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  margin-top: 6.5rem;
+  justify-content: center;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.DatePicker__calenderContainer {
+  z-index: 33;
+}
+.custom-scroll,
+.ant-picker-time-panel-column {
+  overflow-y: scroll;
+  padding: 0 4px;
+}
+.custom-scroll::-webkit-scrollbar,
+.ant-picker-time-panel-column::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+.custom-scroll::-webkit-scrollbar-track,
+.ant-picker-time-panel-column::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb,
+.ant-picker-time-panel-column::-webkit-scrollbar-thumb {
+  background-color: rgba($color: #000000, $alpha: 0.15);
+  opacity: 0.4;
+  background-blend-mode: lighten;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba($color: #000000, $alpha: 0.45);
+}
+.flex-vertical {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+.icon-24 {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+svg {
+}
+// ------------------------------------- a tag ----------------------------
+a {
+  // position: relative;
+  // display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--txt-color);
+
+  &:visited {
+    // color: var(--txt-color);
+  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   border-bottom: 1px solid #03dac6;
+  //   transition: border-bottom 0.1s ease;
+  // }
+  // &:hover::before {
+  //   border-bottom-width: 5px;
+  // }
+}
+// ------------------------------------- css transitions --------------------------------------------------------------
+.sidebar {
+  &-enter {
+    left: -300px;
+    &-active {
+      left: 0;
+      transition: left 0.2s ease;
+    }
+  }
+  &-exit {
+    left: 0;
+    &-active {
+      left: -300px;
+      transition: left 0.2s ease;
+    }
+  }
+}
+
+.board {
+  &-enter {
+    opacity: 0;
+    &-active {
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+  }
+  &-exit {
+    min-height: 400px;
+    &-active {
+      min-height: 10px;
+      transition: height 0.4s ease;
+    }
+  }
+}
+
+.popup {
+  &-enter {
+    transform: scale(0.9);
+    opacity: 0;
+    &-active {
+      transform: scale(1);
+      opacity: 1;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+  }
+  &-exit {
+    top: 0;
+    opacity: 1;
+    &-active {
+      transform: translateY(40px);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+  }
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.space {
+  padding: var(--small-gab);
+  margin: 16px 8px;
+}
+.bold {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
