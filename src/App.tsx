@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ParentContext from './context';
 import { Home, Post } from './pages';
 // import { Home } from './pages';
 import './assets/styles/global.scss';
@@ -22,24 +21,22 @@ const App = () => {
   }, []);
   return (
     <div className="main">
-      <ParentContext>
-        <Toast />
-        <Router>
-          <Suspense fallback={<div>loading...</div>}>
-            <Header />
-            <div className="container">
-              <Switch>
-                <Route exact path={HOME} component={Home} />
-                <Route path={POST} component={Post} />
-                <Route exact path={BROWSE} component={Browse} />
-                <Route exact path={CATEGORY} component={Browse} />
-                <Route path={NEW} component={New} />
-              </Switch>
-            </div>
-            <Footer />
-          </Suspense>
-        </Router>
-      </ParentContext>
+      <Toast />
+      <Router>
+        <Suspense fallback={<div>loading...</div>}>
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path={HOME} component={Home} />
+              <Route path={POST} component={Post} />
+              <Route exact path={BROWSE} component={Browse} />
+              <Route exact path={CATEGORY} component={Browse} />
+              <Route path={NEW} component={New} />
+            </Switch>
+          </div>
+          <Footer />
+        </Suspense>
+      </Router>
     </div>
   );
 };
