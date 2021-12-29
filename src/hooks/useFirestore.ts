@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { generate } from 'shortid';
 import { IPost, StatusType } from '../types';
-import { TOAST_ERROR } from '../constants/notifyTypes';
 import firebase from '../services/firebase';
 import useToast from './useToast';
 
@@ -19,7 +18,7 @@ const useFirestore = () => {
       await firebase.firestore().collection(col).add(obj);
     } catch (error) {
       console.log(error);
-      addToast(TOAST_ERROR, error.message);
+      addToast('error', error.message);
     }
   };
 

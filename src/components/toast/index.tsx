@@ -1,12 +1,12 @@
 import Toast from './Toast';
 import './styles/toast.scss';
-import { useUiContext } from '../../context/UiContext';
+import { useAppContext } from '../../context/AppContext';
 
 const ToastContainer = () => {
-  const { uiState } = useUiContext();
+  const { appState } = useAppContext();
   return (
     <div className="toast-wrapper">
-      {uiState.toast.map((toast) => (
+      {appState.toast.map((toast) => (
         <Toast key={toast.id} toast={toast} />
       ))}
     </div>

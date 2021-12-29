@@ -1,11 +1,11 @@
 /* eslint-disable arrow-body-style */
 import { createPortal } from 'react-dom';
-import { POPUP_HIDDEN } from '../../context/types/uiTypes';
-import { useUiContext } from '../../context/UiContext';
+import { useAppContext } from '../../context/AppContext';
+import { AppActionTypes } from '../../context/reducer/appReducer';
 // import CreateCollection from './forms/CreateCollection';
 import './popup.scss';
 
-const form = (formComponent) => {
+const form = (formComponent: string | null) => {
   switch (formComponent) {
     case 'workspace':
       // return <CreateWorkspace title="Create Workspace" />;
@@ -18,19 +18,19 @@ const form = (formComponent) => {
   }
 };
 const PopUp = () => {
-  const { uiState, uiDispatch } = useUiContext();
+  const { appState, appDispatch } = useAppContext();
   const hidePopUpDispatch = () => {
-    uiDispatch({ type: POPUP_HIDDEN });
+    appDispatch({ type: AppActionTypes.POPUP_HIDE });
   };
   return createPortal(
     <>
-      <div type="button" className="modal-background" onClick={hidePopUpDispatch} />
+      <div className="modal-background" onClick={hidePopUpDispatch} />
 
       <div className="modal__container light-theme">
-        <div className="modal">{form(uiState.popup.component.name)}</div>
+        <div className="modal">{form(appState.popup)}</div>
       </div>
     </>,
-    document.getElementById('popup')
+    document.getElementById('popup')!
   );
 };
 

@@ -1,14 +1,13 @@
 // ------------------- shared
-export { default as Header } from './shared/header/Header.tsx';
+export { default as Header } from './shared/header/Header';
 export { default as Footer } from './shared/footer/Footer';
 export { default as Socials } from './shared/socials/socials';
 export { default as Collapse } from './shared/collapse/Collapse';
 export { default as Toggle } from './toggle/Toggle';
 export { default as Selector } from './selector/Selector';
 export { default as Map } from './shared/map/Map';
-export { PrivateRoute, AlreadyLoginRoute } from './customRoute';
-export { default as Button } from './shared/button/Button.tsx';
-export { default as Link } from './shared/link/Link.tsx';
+export { default as Button } from './shared/button/Button';
+export { default as Link } from './shared/link/Link';
 export { default as TextField } from './shared/textField/TextField';
 export { default as Card } from './shared/card';
 export { default as Toast } from './toast';
