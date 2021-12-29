@@ -27,6 +27,7 @@ const useFirestore = () => {
 
 export const useAds = () => {
   const [status, setStatus] = useState('');
+  const { addToast } = useToast();
   const [data, setData] = useState<any[]>();
   useEffect(() => {
     const syc = async () => {
@@ -39,9 +40,14 @@ export const useAds = () => {
           .get();
         const res = collection.docs.map((doc) => doc.data());
         setData(res);
+        if (res.length === 0) {
+          addToast('error', 'دیتایی برای نمایش وجود ندارد. لطفا فیلترشکن خود را روشن کنید.');
+          setStatus('empty');
+        }
         setStatus('success');
       } catch (error) {
         console.log(error);
+        addToast('error', error.message);
         setStatus('error');
       }
     };

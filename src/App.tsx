@@ -8,6 +8,7 @@ import { Header, Footer, Toast } from './components';
 import { BROWSE, CATEGORY, HOME, POST, NEW } from './constants/routes';
 import { LoadCategories } from './redux/features/categories/categoriesSlice';
 import { LoadCities } from './redux/features/cities/citiesSlice';
+import useToast from './hooks/useToast';
 
 const Browse = lazy(() => import('./pages/browse/Browse'));
 const New = lazy(() => import('./pages/new/New'));

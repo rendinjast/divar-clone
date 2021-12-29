@@ -1,14 +1,13 @@
 import { FC } from 'react';
-import { IconType } from 'react-icons';
 import './button.scss';
 import { IconSelector, IIcon } from '../../../utils/iconSelector';
 
 interface IButton extends IIcon {
   text?: string;
-  onClick: () => void;
+  onClick?: () => void;
   submit?: boolean;
   disabled?: boolean;
-  look?: 'primary' | 'outline' | 'lighten';
+  look?: string;
   className?: string;
 }
 const Button: FC<IButton> = ({

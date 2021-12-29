@@ -5,7 +5,7 @@ import './footer.scss';
 
 const Footer = () => {
   const home = useRouteMatch('/');
-  if (home.isExact) return null;
+  if (home?.isExact) return null;
   return (
     <div className="footer">
       <Logo />

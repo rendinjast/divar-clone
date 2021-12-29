@@ -18,25 +18,27 @@ const Ads = () => {
         <TextField placeholder="جست‌و‌جو در همه آگهی‌ها..." />
       </form>
       <div className="browse__ads__pre-defined">
-        {preDefined.map((p) => (
+        {preDefined.map((p: { slug: string; name: string }) => (
           <Button key={p.slug} look="outline round" text={p.name} />
         ))}
       </div>
       <div className="browse__ads__lists">
-        {data
-          ? data.map((dd) => (
-              // eslint-disable-next-line react/jsx-indent
-              <AdCard
-                key={dd.shortid}
-                shortid={dd.shortid}
-                title={dd.title}
-                image={dd.images && dd.images[0]}
-                date={dd.createdAt}
-                price={dd.price}
-              />
-              // eslint-disable-next-line indent
-            ))
-          : 'nothing '}
+        {status === 'success' && data ? (
+          data.map((dd) => (
+            // eslint-disable-next-line react/jsx-indent
+            <AdCard
+              key={dd.shortid}
+              shortid={dd.shortid}
+              title={dd.title}
+              image={dd.images && dd.images[0]}
+              date={dd.createdAt}
+              price={dd.price}
+            />
+            // eslint-disable-next-line indent
+          ))
+        ) : (
+          <div>{status}</div>
+        )}
       </div>
     </div>
   );

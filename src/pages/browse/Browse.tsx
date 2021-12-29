@@ -7,11 +7,12 @@ import './browse.scss';
 import {
   CategoriesSelector,
   ChangeCurrentCategory,
-  LoadCategories,
 } from '../../redux/features/categories/categoriesSlice';
+import useResponsive from '../../hooks/useResponsive';
 
 const Application = () => {
   const dispatch = useDispatch();
+  const device = useResponsive();
   const { categories } = useSelector(CategoriesSelector);
   const { city, category }: { city: string; category: string } = useParams();
 
@@ -27,7 +28,7 @@ const Application = () => {
 
   return (
     <div className="browse-container">
-      <Sidebar />
+      {device === 'desktop' && <Sidebar />}
       <Ads />
     </div>
   );

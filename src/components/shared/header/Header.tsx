@@ -6,9 +6,11 @@ import { Button, Link } from '../..';
 import useResponsive from '../../../hooks/useResponsive';
 import './header.scss';
 import useOutsideClick from '../../../hooks/useOutsideClick';
+import useToast from '../../../hooks/useToast';
 
 const Header = () => {
-  const responsive = useResponsive();
+  const device = useResponsive();
+  const { addToast } = useToast();
   const ref = useRef(null);
   const outside = useOutsideClick(ref);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -17,6 +19,9 @@ const Header = () => {
       setShowMobileMenu(false);
     }
   }, [outside]);
+  useEffect(() => {
+    console.log(device);
+  }, [device]);
 
   return (
     <header className="header__container no-select">
@@ -29,7 +34,7 @@ const Header = () => {
         </div>
         <Link to="/new" className="primary bold space" text="ثبت آگهی" />
 
-        {responsive === 'mobile' && (
+        {device !== 'desktop' && (
           <Button icon={IoMenuOutline} onClick={() => setShowMobileMenu((prv) => !prv)} />
         )}
       </div>

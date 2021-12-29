@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Collapse, Socials, TextField, Toggle } from '../..';
+import useResponsive from '../../../hooks/useResponsive';
 import CategorySelect from './CategorySelect';
 import './sidebar.scss';
 
@@ -17,8 +18,12 @@ const Sidebar = () => {
           under development
         </Collapse>
         <Collapse title="قیمت" show={showPriceRange} setShow={setShowPriceRange}>
-          <div>{/* <TextField placeholder="مثلا ۴۰۰۰۰ هزار تومان" /> */}</div>
-          <div>{/* <TextField placeholder="مثلا ۴۰۰۰۰ هزار تومان" /> */}</div>
+          <div>
+            <TextField placeholder="مثلا ۴۰۰۰۰ هزار تومان" />
+          </div>
+          <div>
+            <TextField placeholder="مثلا ۴۰۰۰۰ هزار تومان" />
+          </div>
         </Collapse>
         <Toggle check={checkOnlyPics} setCheck={setCheckOnlyPics} label="فقط عکس دار" />
         <Toggle check={checkUrgent} setCheck={setCheckUrgent} label="فقط فوری‌ها" />
