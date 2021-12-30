@@ -1,8 +1,7 @@
 .input-container {
   display: flex;
   border-radius: var(--radius);
-  border: var(--border);
-  background-color: var(--input-color);
+  background-color: #f5f5f5;
   color: var(--txt-color);
   align-items: center;
   margin: 1.2rem 0;
@@ -12,7 +11,7 @@
   input {
     height: 100%;
     width: 100%;
-    padding-left: 0.6rem;
+    padding-right: 0.6rem;
     border: none;
     background-color: transparent;
     color: inherit;

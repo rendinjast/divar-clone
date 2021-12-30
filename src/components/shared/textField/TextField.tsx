@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import { IconType } from 'react-icons/lib';
 import './textField.scss';
 
@@ -7,7 +7,7 @@ interface ITextField {
   type?: string;
   look?: string;
   focus?: boolean;
-  icon?: IconType;
+  icon?: ReactNode;
   placeholder?: string;
   handleValue?: string | number;
   handleBlur?: () => void;
@@ -33,6 +33,7 @@ const TextField: FC<ITextField> = ({
         style={{ borderColor: handleError && '#ff7d7d' }}
         className={`input-container ${focused ? 'focused' : ''} ${look}`}
       >
+        {icon}
         <input
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={focus}
@@ -44,7 +45,6 @@ const TextField: FC<ITextField> = ({
           value={handleValue}
           onChange={handleChange}
         />
-        {icon}
       </div>
       {handleError && <span className="textview error">{handleError}</span>}
     </>

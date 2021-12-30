@@ -1,8 +1,7 @@
-import { FC, FormEvent, useEffect, useMemo, useState } from 'react';
+import { FC, FormEvent, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Map, Selector, TextField } from '../..';
-import UploadBorder from '../../../assets/img/upload_border.svg';
 import useFirestore from '../../../hooks/useFirestore';
 import ImageSection from './Image/ImageSection';
 import Property from './property/Property';
@@ -54,8 +53,6 @@ const AddNew: FC<Props> = ({ category, setCategory }) => {
   }, [category]);
 
   useEffect(() => {
-    console.log({ cities, allCities });
-
     const SavedCity = localStorage.getItem('city');
     const getSavedCity = allCities.find((x) => x.slug === SavedCity);
     if (getSavedCity) {
@@ -95,20 +92,6 @@ const AddNew: FC<Props> = ({ category, setCategory }) => {
       });
       history.push('/');
     }
-
-    // await addData('ads', {
-    //   title,
-    //   description,
-    //   city,
-    //   price,
-    //   phone,
-    //   images: imagesUrl,
-    //   position: position && {
-    //     lat: position.lat,
-    //     lng: position.lng,
-    //   },
-    // });
-    // console.log('added');
   };
 
   return (
@@ -137,7 +120,12 @@ const AddNew: FC<Props> = ({ category, setCategory }) => {
         </Section>
         <Section title="نقشه">
           {mapCenter && (
-            <Map center={mapCenter} draggable position={position} setPosition={setPosition} />
+            <Map
+              center={{ lat: mapCenter[0], lng: mapCenter[1] }}
+              draggable
+              position={position}
+              setPosition={setPosition}
+            />
           )}
         </Section>
         <ImageSection images={images} setImages={setImages} />
@@ -164,7 +152,6 @@ const AddNew: FC<Props> = ({ category, setCategory }) => {
             handleError={errors?.price}
           />
         </Section>
-        <Section title=""></Section>
         <Section title="شماره موبایل">
           <TextField
             type="number"

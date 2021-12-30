@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { IoAlertCircle, IoChevronBack, IoChevronForward, IoHelpCircle } from 'react-icons/io5';
 import { Map } from '../..';
+import { IPost } from '../../../types';
 import './images.scss';
 
-const Images = ({ images, position }) => {
+const Images = ({ post: { position, images } }: { post: IPost }) => {
   const [translateX, setTranslateX] = useState(0);
-  const [translateTotal, setTranslateTotal] = useState(images && images.length * 50 - 50);
+  const translateTotal = images ? images.length * 50 - 50 : 0;
 
-  const handleTranslate = (key) => {
-    console.log(translateTotal);
+  const handleTranslate = (key: 'back' | 'forward') => {
     if (key === 'back') setTranslateX((prv) => prv - 50);
     if (key === 'forward') setTranslateX((prv) => prv + 50);
   };
   return (
     <div className="post__images">
-      {images && (
+      {images && images?.length > 0 && (
         <>
           <div className="post__images-main">
             <div
@@ -53,7 +53,7 @@ const Images = ({ images, position }) => {
           </div>
         </>
       )}
-      {position && <Map position={position} />}
+      {position && <Map position={{ lat: position.lat, lng: position.lng }} />}
       <ul className="post__images-links">
         <li>
           <IoHelpCircle />

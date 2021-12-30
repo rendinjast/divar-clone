@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { AddNew, CategorySelector } from '../../components';
+import useToast from '../../hooks/useToast';
 import './new.scss';
 
 const New = () => {
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState<string | null>(null);
+  const { addToast } = useToast();
   useEffect(() => {
-    console.log(category);
-  }, [category]);
+    addToast('info', 'فقط بخش موبایل در لوازم الکترونیکی دارای قسمت تخصصی است.');
+  }, []);
   return (
     <div className="new-container">
       {category ? (

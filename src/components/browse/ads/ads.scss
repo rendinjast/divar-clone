@@ -11,10 +11,9 @@
   }
   &__lists {
     width: 100%;
-    margin-top: 2rem;
     overflow: hidden;
-   	display: grid;
-  	grid-template-columns: repeat(auto-fill,minmax(27rem, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
     gap: 1rem;
   }
 }

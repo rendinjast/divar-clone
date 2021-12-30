@@ -59,6 +59,7 @@ export const useAds = () => {
 export const usePost = (shortid: string) => {
   const [status, setStatus] = useState<StatusType>('loading');
   const [data, setData] = useState<IPost>();
+  const { addToast } = useToast();
   const getPosts = async () => {
     try {
       setStatus('loading');
@@ -73,10 +74,12 @@ export const usePost = (shortid: string) => {
       collection.forEach((res) => {
         const final: IPost = res.data();
         setData(final);
+        setStatus('success');
       });
     } catch (error) {
       console.log(error);
       setStatus('error');
+      addToast('error', error.message);
     }
   };
   useEffect(() => {

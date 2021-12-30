@@ -4,8 +4,16 @@ import { MapContainer, Marker, TileLayer, useMapEvents, ZoomControl, useMap } fr
 import './map.scss';
 
 const mark = new Icon({ iconUrl: '/images/marker.svg', iconSize: [18, 30] });
+type position = { lat: number; lng: number };
+type setPosition = Dispatch<SetStateAction<position>>;
 
-function LocationMarker({ position, setPosition }) {
+function LocationMarker({
+  position,
+  setPosition,
+}: {
+  position: position;
+  setPosition: setPosition;
+}) {
   useMapEvents({
     click(e) {
       setPosition(e.latlng);
@@ -14,13 +22,19 @@ function LocationMarker({ position, setPosition }) {
 
   return position === null ? null : <Marker icon={mark} position={position} />;
 }
-function ChangeMapCenter({ center }) {
+function ChangeMapCenter({ center }: { center: position }) {
   const map = useMap();
   map.setView(center, 13);
   return null;
 }
 
-const Map = ({ draggable, position, setPosition, center }) => {
+interface MapProps {
+  center?: position;
+  position: position;
+  setPosition?: setPosition;
+  draggable?: boolean;
+}
+const Map = ({ draggable, position, setPosition, center }: MapProps) => {
   return (
     <MapContainer
       center={center || position}
@@ -36,7 +50,7 @@ const Map = ({ draggable, position, setPosition, center }) => {
       {!draggable ? (
         <Marker icon={mark} position={center || position} />
       ) : (
-        <LocationMarker position={position} setPosition={setPosition} />
+        <LocationMarker position={position} setPosition={setPosition!} />
       )}
       <ZoomControl position="bottomleft" />
       {center && <ChangeMapCenter center={center} />}

@@ -2,13 +2,11 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home, Post } from './pages';
-// import { Home } from './pages';
 import './assets/styles/global.scss';
-import { Header, Footer, Toast } from './components';
+import { Header, Footer, Toast, PopUp } from './components';
 import { BROWSE, CATEGORY, HOME, POST, NEW } from './constants/routes';
 import { LoadCategories } from './redux/features/categories/categoriesSlice';
 import { LoadCities } from './redux/features/cities/citiesSlice';
-import useToast from './hooks/useToast';
 
 const Browse = lazy(() => import('./pages/browse/Browse'));
 const New = lazy(() => import('./pages/new/New'));
@@ -23,6 +21,7 @@ const App = () => {
   return (
     <div className="main">
       <Toast />
+      <PopUp />
       <Router>
         <Suspense fallback={<div>loading...</div>}>
           <Header />

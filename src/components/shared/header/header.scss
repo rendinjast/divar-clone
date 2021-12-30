@@ -1,6 +1,11 @@
 @import '../../../assets/styles/variables.scss';
 
 .header {
+  width: 100%;
+  max-width: 124rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &__logo {
     svg {
       width: 4rem;
@@ -12,27 +17,41 @@
     position: fixed;
     top: 0;
     left: 0;
+    padding: 0 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 0 1.6rem;
     background-color: var(--bg-color);
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-    z-index: 12;
+    z-index: 1000;
   }
-  &__menu {
+  &__left,
+  &__right {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  &__right {
+    gap: 3rem;
+  }
+  &__right form {
+    width: 50rem;
+  }
+  &__city {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
   &__lists {
     display: flex;
     gap: 1rem;
-    @media only screen and (max-width: $mobile) {
-      display: none;
-    }
     &.active {
       width: 13rem;
       position: absolute;

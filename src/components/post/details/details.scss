@@ -1,10 +1,29 @@
+@import '../../../assets/styles/variables.scss';
 .post-details {
   max-width: 42%;
   flex: 1;
-  &__actions {
+
+  font-size: 1.4rem;
+  &__actions,
+  &__contact {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 3rem 0;
+  }
+  &__contact {
+    span:last-child {
+      color: var(--primary);
+      font-weight: bold;
+    }
+  }
+  &__filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: var(--border);
   }
   &__description {
     margin-top: 2rem;

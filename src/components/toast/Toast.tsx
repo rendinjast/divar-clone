@@ -41,8 +41,6 @@ const Toast = ({ toast }: { toast: ToastProp }) => {
   const handleStart = () => {
     const interval = setInterval(() => {
       setTimer((prev) => {
-        console.log(prev);
-
         if (prev < 100) {
           return prev + 1;
         }

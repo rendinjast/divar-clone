@@ -1,7 +1,4 @@
-/* eslint-disable max-len */
 import { useEffect } from 'react';
-import { Button, TextField } from '../..';
-import preDefined from '../../../fixtures/preDefined.json';
 import { useAds } from '../../../hooks/useFirestore';
 import AdCard from './adCard/AdCard';
 import './ads.scss';
@@ -14,14 +11,6 @@ const Ads = () => {
 
   return (
     <div className="browse__ads-container">
-      <form>
-        <TextField placeholder="جست‌و‌جو در همه آگهی‌ها..." />
-      </form>
-      <div className="browse__ads__pre-defined">
-        {preDefined.map((p: { slug: string; name: string }) => (
-          <Button key={p.slug} look="outline round" text={p.name} />
-        ))}
-      </div>
       <div className="browse__ads__lists">
         {status === 'success' && data ? (
           data.map((dd) => (

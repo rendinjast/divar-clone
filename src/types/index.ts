@@ -1,3 +1,5 @@
+import { SchemaType } from '../redux/features/schema/schema.type';
+
 export interface IPost {
   title?: string;
   description?: string;
@@ -9,6 +11,11 @@ export interface IPost {
   position?: { lng: number; lat: number };
   price?: string;
   shortid?: string;
+  category?: string;
+  filters?: {
+    name: string;
+    value: string;
+  }[];
   status?: { value: string; label: string };
 }
 

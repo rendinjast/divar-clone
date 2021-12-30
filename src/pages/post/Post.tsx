@@ -9,17 +9,14 @@ type params = {
 const Post = () => {
   const { shortid }: params = useParams();
   const { data, status } = usePost(shortid);
+
   return (
     <div className="post">
-      {data && (
+      {status === 'loading' && <div className="post__loading">Loading...</div>}
+      {data && status === 'success' && (
         <>
-          <PostDetails
-            title={data.title!}
-            description={data.description!}
-            createdAt={data.createdAt!}
-            city={data.city!}
-          />
-          <PostImages images={data.images} position={data.position} />
+          <PostDetails post={data} />
+          <PostImages post={data} />
         </>
       )}
     </div>

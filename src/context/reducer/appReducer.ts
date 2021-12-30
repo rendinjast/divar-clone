@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { AppState, ToastProp } from '../AppContext';
 
 export enum AppActionTypes {
@@ -9,7 +10,7 @@ export enum AppActionTypes {
 
 type ToastAddAction = { type: AppActionTypes.TOAST_ADD; payload: ToastProp };
 type ToastRemoveAction = { type: AppActionTypes.TOAST_REMOVE; payload: string };
-type PopUpShowAction = { type: AppActionTypes.POPUP_SHOW; payload: string };
+type PopUpShowAction = { type: AppActionTypes.POPUP_SHOW; payload: ReactNode };
 type PopUpHideAction = { type: AppActionTypes.POPUP_HIDE };
 
 export type appAction = ToastAddAction | ToastRemoveAction | PopUpShowAction | PopUpHideAction;

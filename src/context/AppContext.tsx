@@ -1,4 +1,4 @@
-import { useReducer, createContext, useContext, FC, Dispatch } from 'react';
+import { useReducer, createContext, useContext, FC, Dispatch, ReactNode } from 'react';
 import uiReducer, { appAction } from './reducer/appReducer';
 
 export type ToastType = 'success' | 'info' | 'alert' | 'error';
@@ -8,7 +8,7 @@ export interface ToastProp {
   message: string;
 }
 export interface AppState {
-  popup: string | null;
+  popup: ReactNode | null;
   toast: ToastProp[];
 }
 const initialState = {
